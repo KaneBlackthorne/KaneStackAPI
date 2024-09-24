@@ -1,11 +1,16 @@
-# This workflow will build a package using Maven and then publish it to GitHub packages when a release is created
-# For more information see: https://github.com/actions/setup-java/blob/main/docs/advanced-usage.md#apache-maven-with-a-settings-path
+# This workflow will build a package using Maven and then publish it to GitHub packages
+# whenever code is pushed or a pull request is created.
 
 name: Maven Package
 
+# Trigger the workflow on every push and pull request
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - main    # You can specify other branches here, or use `*` for all branches.
+  pull_request:
+    branches:
+      - main    # Run on pull requests targeting the main branch.
 
 jobs:
   build:
